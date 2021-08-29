@@ -1,0 +1,131 @@
+<!-- -------------------------------------------------
+    Shopping Cart System by Pao Yu    
+------------------------------------------------------>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- --------------------------------------------------
+    The viewport uses these parameters to automatically
+    zoom out of the device to fit all contents on the
+    screen on mobile and tablets.
+    ------------------------------------------------------>
+    <meta name="viewport"
+        content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- --------------------------------------------------
+    Imports the main stylesheet and javascript file
+    ------------------------------------------------------>
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js"></script>
+    <title>Pao Yu | COMP3340 Assignment #3</title>
+</head>
+
+<!-- --------------------------------------------------
+    The script will only start executing the main()
+    function on the js while when all DOM elements
+    are completely loaded by the browser.
+------------------------------------------------------>
+
+<body onload="main()">
+    <main>
+        <!-- --------------------------------------------------
+            Displays the current number of items in the cart
+        ------------------------------------------------------>
+        <aside id="cart-quantity-container">
+            🛒 (<span id="cart-quantity">0</span>)
+        </aside>
+
+        <!-- --------------------------------------------------
+            This button switches between available recommended
+            products using a set difference obtained after
+            one execution of main().
+        ------------------------------------------------------>
+        <aside id="recommended-items-switch-container" class="spring" onclick="switch_recommended_products()">
+            <span id="recommended-items-switch">
+                ⟳
+            </span><br>
+            <span id="recommended-items-subheading">
+                View More
+            </span>
+        </aside>
+
+        <!-- --------------------------------------------------
+            Displays a random selection of products from an
+            initial 12-item data array declared in the js file
+        ------------------------------------------------------>
+        <table id="recommended-items">
+            <caption id="recommended-items-title">Recommended Items For Sale</caption>
+            <tbody>
+                <!-- --------------------------------------------------
+                    Each element of the table can be clicked, and 
+                    its entirety is passed as a parameter to the
+                    add_to_cart() function.
+                ------------------------------------------------------>
+                <tr>
+                    <td id="recommended-product-1" class="spring" onclick="add_to_cart(this)"></td>
+                    <td id="recommended-product-2" class="spring" onclick="add_to_cart(this)"></td>
+                    <td id="recommended-product-3" class="spring" onclick="add_to_cart(this)"></td>
+                </tr>
+                <tr>
+                    <td id="recommended-product-4" class="spring" onclick="add_to_cart(this)"></td>
+                    <td id="recommended-product-5" class="spring" onclick="add_to_cart(this)"></td>
+                    <td id="recommended-product-6" class="spring" onclick="add_to_cart(this)"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- --------------------------------------------------
+            Contains the list of items added by the user to
+            the cart using a Map data structure.
+        ------------------------------------------------------>
+        <table id="shopping-cart" style="width:100%">
+            <col style="width:21%">
+            <col style="width:34%">
+            <col style="width:21%">
+            <col style="width:8%">
+            <col style="width:16">
+            <caption>Shopping Cart</caption>
+            <thead>
+                <tr id="shopping-cart-list-header">
+                    <th>Item</th>
+                    <th>Caption</th>
+                    <th>Price</th>
+                    <th>Qty.</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="shopping-cart-list"></tbody>
+            <tfoot>
+                <tr>
+                    <!-- --------------------------------------------------
+                        Contains a dynamically calculated total using
+                        the shopping cart map entries.
+                    ------------------------------------------------------>
+                    <td colspan="2">TOTAL</td>
+                    <td colspan="1" id="shopping-cart-list-total">$0.00</td>
+                    <td><span id="shopping-cart-list-quantity">0</span></td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+
+    <!-- --------------------------------------------------
+        Footer code to indicate copyright and reference
+        material used. Dynamically displays current year.
+    ------------------------------------------------------>
+    <footer>
+        <span>
+            Pao Yu &copy; <span id='year'></span> | Images courtesy of Apple, Inc.
+        </span>
+        <script>
+            const year = document.getElementById('year');
+            year.innerText = (new Date()).getFullYear();
+        </script>
+    </footer>
+</body>
+
+</html>
